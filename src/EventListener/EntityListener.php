@@ -1,6 +1,6 @@
 <?php
 
-namespace OWP\OwpCoreBundle\EventListener;
+namespace Owp\OwpCore\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;

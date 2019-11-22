@@ -1,6 +1,6 @@
 <?php
 
-namespace OWP\OwpCoreBundle\Model;
+namespace Owp\OwpCore\Model;
 
 Trait PrivateTrait
 {

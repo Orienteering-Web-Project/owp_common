@@ -1,9 +1,9 @@
 <?php
 
-namespace OWP\OwpCoreBundle\Entity;
+namespace Owp\OwpCore\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use OWP\OwpCoreBundle\Model as OwpCoreTrait;
+use Owp\OwpCore\Model as OwpCoreTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")

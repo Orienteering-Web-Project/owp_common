@@ -1,5 +1,5 @@
 {
-    "name": "owp/owp_core",
+    "name": "owp/owp-core",
     "description": "Package OWP Core : coeur du système OWP",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "OWP\\OwpCoreBundle\\": "src/"
+            "Owp\\OwpCore\\": "src/"
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 // src/Twig/AppExtension.php
-namespace OWP\OwpCoreBundle\Twig;
+namespace Owp\OwpCore\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;

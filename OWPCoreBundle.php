@@ -1,5 +1,5 @@
 <?php
-namespace OWP\OwpCoreBundle;
+namespace Owp\OwpCore;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
