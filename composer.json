@@ -12,6 +12,9 @@
     "require": {
         "twig/extensions": "^1.5"
     },
+    "config": {
+        "optimize-autoloader": true
+    },
     "autoload": {
         "psr-4": {
             "Owp\\OwpCore\\": "src/"
