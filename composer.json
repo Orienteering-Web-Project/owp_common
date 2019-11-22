@@ -1,7 +1,7 @@
 {
     "name": "owp/owp_core",
     "description": "Package OWP Core : coeur du système OWP",
-    "type": "project",
+    "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
         {
