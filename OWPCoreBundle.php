@@ -1,9 +1,9 @@
 <?php
-namespace OWP\OWPCoreBundle;
+namespace OWP\OwpCoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OWPCoreBundle extends Bundle
+class OwpCoreBundle extends Bundle
 {
 
 }

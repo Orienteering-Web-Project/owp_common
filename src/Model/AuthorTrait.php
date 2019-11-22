@@ -1,6 +1,6 @@
 <?php
 
-namespace OWP\OWPCoreBundle\Model;
+namespace OWP\OwpCoreBundle\Model;
 
 Trait AuthorTrait
 {
