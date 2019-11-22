@@ -65,7 +65,3 @@ services:
             - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
-
-    owp.service.news:
-        class: Owp\OwpCore\Service\NewsService
-        arguments: []
