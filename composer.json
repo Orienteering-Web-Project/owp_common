@@ -11,7 +11,7 @@
     ],
     "require": {
         "twig/extensions": "^1.5"
-    }
+    },
     "autoload": {
         "psr-4": {
             "OWP\\OwpCoreBundle\\": "src/"
