@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Owp\OwpCore\Model as OwpCoreTrait;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
+ * @ORM\Entity(repositoryClass="Owp\OwpCore\Repository\MenuRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Menu

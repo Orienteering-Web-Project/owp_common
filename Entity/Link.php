@@ -2,12 +2,11 @@
 
 namespace Owp\OwpCore\Entity;
 
-use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use App\Model\Common as OwpCommonTrait;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
+ * @ORM\Entity(repositoryClass="Owp\OwpCore\Repository\LinkRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Link
