@@ -3,7 +3,7 @@
 namespace Owp\OwpCore\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Model\Common as OwpCommonTrait;
+use Owp\OwpCore\Model as OwpCommonTrait;
 
 /**
  * @ORM\Entity(repositoryClass="Owp\OwpCore\Repository\LinkRepository")
