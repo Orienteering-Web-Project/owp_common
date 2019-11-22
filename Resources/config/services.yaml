@@ -1,0 +1,71 @@
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+
+    Owp\OwpCore\:
+        resource: '../../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Resources,OwpCoreBundle.php}'
+
+    Owp\OwpCore\Controller\:
+        resource: '../../src/Controller'
+        tags: ['controller.service_arguments']
+
+    Owp\OwpCore\EventListener\:
+        resource: '../../src/EventListener'
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    App\Twig\:
+        resource: '../../src/Twig'
+        tags: ['twig.runtime']
+
+    App\Command\:
+        resource: '../../src/Command'
+        tags: ['console.command']
+
+    admin.link:
+        class: Owp\OwpCore\Admin\LinkAdmin
+        arguments: [~, App\Entity\Link, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Liens utiles" }
+
+    admin.menu:
+        class: Owp\OwpCore\Admin\MenuAdmin
+        arguments: [~, App\Entity\Menu, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Items du menu" }
+
+    sonata.block.admin_stat:
+        class: Owp\OwpCore\Block\AdminStatBlock
+        arguments:
+            - '@twig'
+            - '@templating'
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: sonata.block }
+
+    sonata.block.link:
+        class: Owp\OwpCore\Block\LinkBlock
+        arguments:
+            - '@twig'
+            - '@templating'
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: sonata.block }
+
+    sonata.block.menu:
+        class: Owp\OwpCore\Block\MenuBlock
+        arguments:
+            - '@twig'
+            - '@templating'
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: sonata.block }
+
+    owp.service.news:
+        class: Owp\OwpCore\Service\NewsService
+        arguments: []
