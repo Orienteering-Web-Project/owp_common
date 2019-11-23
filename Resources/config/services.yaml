@@ -2,40 +2,36 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-        public: false       # Allows optimizing the container by removing unused services; this also means
+        public: true       # Allows optimizing the container by removing unused services; this also means
 
     Owp\OwpCore\:
-        resource: '../../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Resources,OwpCoreBundle.php}'
-
-    Owp\OwpCore\Controller\:
-        resource: '../../src/Controller'
-        tags: ['controller.service_arguments']
+        resource: '../../*'
+        exclude: '../{DependencyInjection,Entity,Migrations,Tests,Resources,OwpCoreBundle.php}'
 
     Owp\OwpCore\EventListener\:
-        resource: '../../src/EventListener'
+        resource: '../../EventListener'
         arguments: ['@security.token_storage']
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
 
-    App\Twig\:
-        resource: '../../src/Twig'
+    Owp\OwpCore\Twig\:
+        resource: '../../Twig'
         tags: ['twig.runtime']
 
-    App\Command\:
-        resource: '../../src/Command'
+    Owp\OwpCore\Command\:
+        resource: '../../Command'
         tags: ['console.command']
 
     admin.link:
         class: Owp\OwpCore\Admin\LinkAdmin
-        arguments: [~, App\Entity\Link, ~]
+        arguments: [~, Owp\OwpCore\Entity\Link, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Liens utiles" }
 
     admin.menu:
         class: Owp\OwpCore\Admin\MenuAdmin
-        arguments: [~, App\Entity\Menu, ~]
+        arguments: [~, Owp\OwpCore\Entity\Menu, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Items du menu" }
 

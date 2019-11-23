@@ -12,15 +12,9 @@ use Symfony\Component\Config\FileLocator;
 
 class OwpCoreExtension extends Extension implements PrependExtensionInterface
 {
-    /**
-     * Handles the knp_menu configuration.
-     *
-     * @param array            $configs   The configurations being loaded
-     * @param ContainerBuilder $container
-     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yaml');
+        $loader->load('services.xml');
     }
 }
