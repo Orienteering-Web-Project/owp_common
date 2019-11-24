@@ -5,7 +5,6 @@ namespace Owp\OwpCore\EventListener;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use App\Entity\AbstractEntity;
 use Doctrine\ORM\Events;
 
 class EntityListener implements EventSubscriber

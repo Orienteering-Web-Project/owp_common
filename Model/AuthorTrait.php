@@ -2,18 +2,18 @@
 
 namespace Owp\OwpCore\Model;
 
-use App\Entity\User;
+use Owp\OwpCore\Entity\User;
 
 Trait AuthorTrait
 {
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Owp\OwpCore\Entity\User")
      * @ORM\JoinColumn(nullable=true)
      */
     protected $createBy;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Owp\OwpCore\Entity\User")
      * @ORM\JoinColumn(nullable=true)
      */
     protected $updateBy;

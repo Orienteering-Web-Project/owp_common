@@ -1,6 +1,5 @@
 <?php
 
-// src/Twig/AppExtension.php
 namespace Owp\OwpCore\Twig;
 
 use Twig\Extension\AbstractExtension;
