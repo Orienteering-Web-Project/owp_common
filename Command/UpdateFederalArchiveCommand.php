@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Owp\OwpCore\Repository\BaseRepository;
+use Owp\OwpCore\Entity\Base;
 
 class UpdateFederalArchiveCommand extends Command
 {
@@ -75,9 +76,9 @@ class UpdateFederalArchiveCommand extends Command
 
         $this->em->flush();
         $output->writeln([
-            'Import terminé',
-            'Insertions : ' . $numberInsert,
-            'Mise à jour : ' . $numberUpdate,
+            ($numberInsert + $numberUpdate) . ' importations terminées',
+            $numberInsert . ' insertions',
+            $numberUpdate . ' mises à jour',
         ]);
     }
 }
