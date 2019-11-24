@@ -35,6 +35,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: referentiel, label: "Items du menu" }
 
+    admin.user:
+        class: App\Admin\UserAdmin
+        arguments: [~, Owp\OwpCore\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: user, label: "Utilisateurs" }
+
     sonata.block.admin_stat:
         class: Owp\OwpCore\Block\AdminStatBlock
         arguments:
