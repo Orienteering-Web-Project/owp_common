@@ -3,6 +3,7 @@
 namespace Owp\OwpCore\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Owp\OwpCore\Model as OwpCoreTrait;
 
 /**
  * @ORM\Entity(repositoryClass="Owp\OwpCore\Repository\BaseRepository")
@@ -10,21 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Base
 {
+    use OwpCoreTrait\UserNameTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
     protected $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $lastName;
 
     /**
      * @ORM\Column(type="integer", length=255, nullable=true)
@@ -44,30 +37,6 @@ class Base
     public function setId($id): ?self
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName(string $firstName): ?self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): ?self
-    {
-        $this->lastName = $lastName;
 
         return $this;
     }

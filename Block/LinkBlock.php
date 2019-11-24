@@ -11,26 +11,25 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Owp\OwpCore\Entity\Link;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
+use Owp\OwpCore\Repository\LinkRepository;
 
 final class LinkBlock extends AbstractBlockService
 {
-    private $doctrine;
+    private $linkRepository;
 
-    public function __construct($templatingOrDeprecatedName = null, EngineInterface $templating = null, EntityManager $doctrine = null)
+    public function __construct(Environment $templatingOrDeprecatedName, EngineInterface $templating, LinkRepository $linkRepository)
     {
         parent::__construct($templatingOrDeprecatedName, $templating);
 
-        $this->doctrine = $doctrine;
+        $this->linkRepository = $linkRepository;
     }
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         return $this->renderResponse('Common/Block/link_block.html.twig', [
-            'links'     => $this->doctrine->getRepository(Link::class)->findBy([]),
-            'block'     => $blockContext->getBlock(),
-            'settings'  => $blockContext->getSettings()
+            'links'     => $this->linkRepository->findBy([]),
         ], $response);
     }
 }

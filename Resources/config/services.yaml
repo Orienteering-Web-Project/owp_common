@@ -41,29 +41,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: user, label: "Utilisateurs" }
 
-    sonata.block.admin_stat:
-        class: Owp\OwpCore\Block\AdminStatBlock
-        arguments:
-            - '@twig'
-            - '@templating'
-            - '@doctrine.orm.entity_manager'
-        tags:
-            - { name: sonata.block }
-
     sonata.block.link:
         class: Owp\OwpCore\Block\LinkBlock
-        arguments:
-            - '@twig'
-            - '@templating'
-            - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
 
     sonata.block.menu:
         class: Owp\OwpCore\Block\MenuBlock
-        arguments:
-            - '@twig'
-            - '@templating'
-            - '@doctrine.orm.entity_manager'
         tags:
             - { name: sonata.block }
