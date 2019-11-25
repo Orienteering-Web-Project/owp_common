@@ -4,4 +4,7 @@
         <default key="_controller">Owp\OwpCore\Controller\UserController::delete</default>
         <requirement key="id">\d+</requirement>
     </route>
+    <route id="owp_homepage" path="/">
+        <default key="_controller">Owp\OwpCore\Controller\DefaultController::index</default>
+    </route>
 </routes>

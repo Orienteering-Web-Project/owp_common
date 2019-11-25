@@ -26,7 +26,7 @@ class Comment extends BaseComment implements SignedCommentInterface
      * Thread of this comment
      *
      * @var Thread
-     * @ORM\ManyToOne(targetEntity="App\Entity\Thread")
+     * @ORM\ManyToOne(targetEntity="Owp\OwpCore\Entity\Thread")
      */
     protected $thread;
 

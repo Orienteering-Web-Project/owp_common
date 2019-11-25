@@ -6,6 +6,8 @@ use Owp\OwpCore\Entity\Base;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Owp\OwpCore\Model as OwpCoreModel;
+use App\Entity\People;
+use Owp\OwpEvent\Entity\Event;
 
 /**
  * @ORM\Entity
