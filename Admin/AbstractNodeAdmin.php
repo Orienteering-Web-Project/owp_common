@@ -88,9 +88,9 @@ abstract class AbstractNodeAdmin extends AbstractAdmin
         ])
         ->add('_action', null, [
             'actions' => [
-                'show' => ['template' => 'Administration/CRUD/list__action_show.html.twig'],
-                'edit' => ['template' => 'Administration/CRUD/list__action_edit.html.twig'],
-                'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
+                'show' => ['template' => '@OwpCore/Administration/CRUD/list__action_show.html.twig'],
+                'edit' => ['template' => '@OwpCore/Administration/CRUD/list__action_edit.html.twig'],
+                'delete' => ['template' => '@OwpCore/Administration/CRUD/list__action_delete.html.twig'],
             ]
         ]);
     }

@@ -48,8 +48,8 @@ abstract class AbstractEntityAdmin extends AbstractAdmin
         ])
         ->add('_action', null, [
             'actions' => [
-                'edit' => ['template' => 'Administration/CRUD/list__action_edit.html.twig'],
-                'delete' => ['template' => 'Administration/CRUD/list__action_delete.html.twig'],
+                'edit' => ['template' => '@OwpCore/Administration/CRUD/list__action_edit.html.twig'],
+                'delete' => ['template' => '@OwpCore/Administration/CRUD/list__action_delete.html.twig'],
             ]
         ]);
     }
