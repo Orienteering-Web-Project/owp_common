@@ -2,11 +2,9 @@
 
 namespace Owp\OwpCore\Controller;
 
+use Owp\OwpCore\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Owp\OwpCore\Entity\User;
-use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractController
 {

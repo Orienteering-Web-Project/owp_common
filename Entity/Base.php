@@ -29,12 +29,12 @@ class Base
      */
     protected $club;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId($id): ?self
+    public function setId($id): self
     {
         $this->id = $id;
 
@@ -46,19 +46,19 @@ class Base
         return $this->si;
     }
 
-    public function setSi($si): ?self
+    public function setSi($si): self
     {
         $this->si = $si;
 
         return $this;
     }
 
-    public function getClub(): ?string
+    public function getClub(): string
     {
         return $this->club;
     }
 
-    public function setClub($club): ?self
+    public function setClub($club): self
     {
         $this->club = $club;
 

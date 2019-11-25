@@ -1,4 +1,4 @@
-{% extends '@OwpCoreBundle/base.html.twig' %}
+{% extends '@OwpCore/base.html.twig' %}
 
 {% macro breadcrumb(items) %}
     <nav aria-label="breadcrumb">
@@ -27,7 +27,7 @@
 {% block body %}
     <div id="content-header" class="carousel border-bottom border-primary slide" data-ride="carousel">
         <div class="carousel-inner bg-dark" role="list">
-            <div role="listitem" class="carousel-item active" height="25rem">
+            <div role="listitem" class="carousel-item active">
                 {% block content_header %}{% endblock %}
             </div>
         </div>

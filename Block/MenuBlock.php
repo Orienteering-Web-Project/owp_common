@@ -5,7 +5,6 @@ namespace Owp\OwpCore\Block;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
 use Owp\OwpCore\Repository\MenuRepository;
 use Twig\Environment;
@@ -23,7 +22,7 @@ final class MenuBlock extends AbstractBlockService
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        return $this->renderResponse('Common/Block/menu_block.html.twig', [
+        return $this->renderResponse('@OwpCore/Common/Block/menu_block.html.twig', [
             'menus'     => $this->menuRepository->findBy([]),
         ], $response);
     }
