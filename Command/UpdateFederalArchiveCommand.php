@@ -7,7 +7,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Owp\OwpCore\Repository\BaseRepository;
+use Owp\OwpCore\Repository\ClubRepository;
 use Owp\OwpCore\Entity\Base;
+use Owp\OwpCore\Entity\Club;
 
 class UpdateFederalArchiveCommand extends Command
 {
@@ -18,16 +20,19 @@ class UpdateFederalArchiveCommand extends Command
     const COLUMN_FIRST_NAME = 5;
     const COLUMN_SI_NUMBER = 1;
     const COLUMN_CLUB = 9;
+    const COLUMN_CLUB_NAME = 10;
 
     private $em;
     private $baseRepository;
+    private $clubRepository;
 
-    public function __construct(EntityManagerInterface $em, BaseRepository $baseRepository, $name = null)
+    public function __construct(EntityManagerInterface $em, BaseRepository $baseRepository, ClubRepository $clubRepository, $name = null)
     {
         parent::__construct($name);
 
         $this->em = $em;
         $this->baseRepository = $baseRepository;
+        $this->clubRepository = $clubRepository;
     }
 
     protected function configure()
@@ -49,36 +54,49 @@ class UpdateFederalArchiveCommand extends Command
         $file = fopen('http://licences.ffcorientation.fr/licencesFFCO-OE2010.csv', 'r');
 
         $output->writeln('Import dans la base de données');
-        $numberInsert = 0;
-        $numberUpdate = 0;
+
         fgetcsv($file, 0, ";");
         while (($row = fgetcsv($file, 0, ";")) !== false) {
-            $entity = $this->baseRepository->find($row[self::COLUMN_BASE_ID]);
-
-            if (empty($entity)) {
-                $entity = new Base();
-                $entity->setId($row[self::COLUMN_BASE_ID]);
-                $numberInsert++;
-            }
-            else {
-                $numberUpdate++;
-            }
-
-            $entity
-                ->setFirstName(utf8_encode($row[self::COLUMN_FIRST_NAME]))
-                ->setLastName(utf8_encode($row[self::COLUMN_LAST_NAME]))
-                ->setSI($row[self::COLUMN_SI_NUMBER])
-                ->setClub($row[self::COLUMN_CLUB])
-            ;
-
-            $this->em->persist($entity);
+            $this->saveBase($row);
+            $this->saveClub($row);
         }
 
         $this->em->flush();
-        $output->writeln([
-            ($numberInsert + $numberUpdate) . ' importations terminées',
-            $numberInsert . ' insertions',
-            $numberUpdate . ' mises à jour',
-        ]);
+        $output->writeln('Importations terminées');
+    }
+
+    private function saveBase(array $row)
+    {
+        $base = $this->baseRepository->find($row[self::COLUMN_BASE_ID]);
+
+        if (empty($base)) {
+            $base = new Base();
+            $base->setId($row[self::COLUMN_BASE_ID]);
+        }
+
+        $base
+            ->setFirstName(utf8_encode($row[self::COLUMN_FIRST_NAME]))
+            ->setLastName(utf8_encode($row[self::COLUMN_LAST_NAME]))
+            ->setSI($row[self::COLUMN_SI_NUMBER])
+            ->setClub($row[self::COLUMN_CLUB])
+        ;
+
+        $this->em->persist($base);
+    }
+
+    private function saveClub(array $row)
+    {
+        $club = $this->clubRepository->find($row[self::COLUMN_CLUB]);
+
+        if (empty($club)) {
+            $club = new Club();
+            $club->setId($row[self::COLUMN_CLUB]);
+        }
+
+        $club
+            ->setLabel(utf8_encode($row[self::COLUMN_CLUB_NAME]))
+        ;
+
+        $this->em->persist($club);
     }
 }

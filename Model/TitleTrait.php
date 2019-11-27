@@ -38,7 +38,7 @@ Trait TitleTrait
 
     public function generateSlugValue($values)
     {
-        return implode('-', str_replace(' ', '-', $values));
+        return strtolower(implode('-', str_replace(' ', '-', $values)));
     }
 
     /**

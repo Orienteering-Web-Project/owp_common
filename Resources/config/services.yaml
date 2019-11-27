@@ -23,6 +23,10 @@ services:
         resource: '../../Command'
         tags: ['console.command']
 
+    service.club:
+        class: Owp\OwpCore\Service\ClubService
+        public: true
+
     admin.link:
         class: Owp\OwpCore\Admin\LinkAdmin
         arguments: [~, Owp\OwpCore\Entity\Link, ~]

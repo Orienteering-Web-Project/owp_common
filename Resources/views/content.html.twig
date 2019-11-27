@@ -11,7 +11,7 @@
                     </li>
                 {% else %}
                     <li class="breadcrumb-item">
-                        <a href="{{ path(item.url) }}">{{ item.label}}</a>
+                        <a href="{{ item.url }}">{{ item.label}}</a>
                     </li>
                 {% endif %}
             {% endfor %}
