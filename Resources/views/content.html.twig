@@ -41,12 +41,14 @@
     {% block message %}
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashBag.all %}
-                <div class="container my-4">
-                    {% for message in messages %}
+                <div class="row my-4">
+                    <div class="col-12 col-lg-10 offset-lg-1">
+                        {% for message in messages %}
                         <div class="alert alert-{{ type }} alert-dismissible collapsed-box">
                             {{ message|trans({}, 'FOSUserBundle') }}
                         </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             {% endfor %}
         {% endif %}
