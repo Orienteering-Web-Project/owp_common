@@ -17,18 +17,35 @@ class Club
 
     /**
      * @ORM\Id
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="integer")
      */
     protected $id;
 
-    public function getId(): string
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $name;
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId($id): self
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName($name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

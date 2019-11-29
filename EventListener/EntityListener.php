@@ -28,12 +28,12 @@ class EntityListener implements EventSubscriber
     {
         $entity = $event->getEntity();
 
-        $user = $this->tokenStorage->getToken()->getUser();
-        if (!$user instanceof User) {
-            return;
-        }
-
         if (in_array('Owp\OwpCore\Model\AuthorTrait', class_uses($entity))) {
+            $user = $this->tokenStorage->getToken()->getUser();
+            if (!$user instanceof User) {
+                return;
+            }
+
             $entity->setCreateBy($user);
             $entity->setUpdateBy($user);
         }
@@ -43,12 +43,13 @@ class EntityListener implements EventSubscriber
     {
         $entity = $event->getEntity();
 
-        $user = $this->tokenStorage->getToken()->getUser();
-        if (!$user instanceof User) {
-            return;
-        }
 
         if (in_array('Owp\OwpCore\Model\AuthorTrait', class_uses($entity))) {
+            $user = $this->tokenStorage->getToken()->getUser();
+            if (!$user instanceof User) {
+                return;
+            }
+
             $entity->setUpdateBy($user);
         }
     }

@@ -19,8 +19,9 @@ class UpdateFederalArchiveCommand extends Command
     const COLUMN_LAST_NAME = 4;
     const COLUMN_FIRST_NAME = 5;
     const COLUMN_SI_NUMBER = 1;
-    const COLUMN_CLUB = 9;
-    const COLUMN_CLUB_NAME = 10;
+    const COLUMN_CLUB = 8;
+    const COLUMN_CLUB_NAME = 9;
+    const COLUMN_CLUB_VILLE = 10;
 
     private $em;
     private $baseRepository;
@@ -57,15 +58,15 @@ class UpdateFederalArchiveCommand extends Command
 
         fgetcsv($file, 0, ";");
         while (($row = fgetcsv($file, 0, ";")) !== false) {
-            $this->saveBase($row);
-            $this->saveClub($row);
+            $club = $this->saveClub($row);
+            $this->saveBase($club, $row);
         }
 
         $this->em->flush();
         $output->writeln('Importations terminées');
     }
 
-    private function saveBase(array $row)
+    private function saveBase(Club $club, array $row)
     {
         $base = $this->baseRepository->find($row[self::COLUMN_BASE_ID]);
 
@@ -78,7 +79,7 @@ class UpdateFederalArchiveCommand extends Command
             ->setFirstName(utf8_encode($row[self::COLUMN_FIRST_NAME]))
             ->setLastName(utf8_encode($row[self::COLUMN_LAST_NAME]))
             ->setSI($row[self::COLUMN_SI_NUMBER])
-            ->setClub($row[self::COLUMN_CLUB])
+            ->setClub($club)
         ;
 
         $this->em->persist($base);
@@ -94,9 +95,12 @@ class UpdateFederalArchiveCommand extends Command
         }
 
         $club
-            ->setLabel(utf8_encode($row[self::COLUMN_CLUB_NAME]))
+            ->setName(utf8_encode($row[self::COLUMN_CLUB_NAME]))
+            ->setLabel(utf8_encode($row[self::COLUMN_CLUB_VILLE]))
         ;
 
         $this->em->persist($club);
+
+        return $club;
     }
 }

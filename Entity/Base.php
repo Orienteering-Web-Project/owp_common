@@ -25,7 +25,8 @@ class Base
     protected $si;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Club")
+     * @ORM\JoinColumn(nullable=true)
      */
     protected $club;
 
@@ -53,12 +54,12 @@ class Base
         return $this;
     }
 
-    public function getClub(): string
+    public function getClub(): Club
     {
         return $this->club;
     }
 
-    public function setClub($club): self
+    public function setClub(Club $club): self
     {
         $this->club = $club;
 
