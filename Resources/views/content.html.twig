@@ -41,7 +41,7 @@
     {% block message %}
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashBag.all %}
-                <div class="row my-4">
+                <div class="row my-4 mx-0">
                     <div class="col-12 col-lg-10 offset-lg-1">
                         {% for message in messages %}
                         <div class="alert alert-{{ type }} alert-dismissible collapsed-box">
@@ -57,4 +57,6 @@
     {% block content_body %}{% endblock %}
 
     {% block content_footer %}{% endblock %}
+
+    {% include '@OwpCore/Common/Modal/modal__confirm_delete.html.twig' %}
 {% endblock %}
