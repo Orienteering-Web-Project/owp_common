@@ -3,9 +3,11 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    {% include '@OwpCore/Homepage/homepage__news.html.twig' %}
+    {% if sonata_block_exists('owp_event.upcomming_events_list') %}
+        {{ sonata_block_render('owp_event.upcomming_events_list') }}
+    {% endif %}
 
-    {% include '@OwpCore/Homepage/homepage__events.html.twig' %}
+    {% include '@OwpCore/Homepage/homepage__news.html.twig' %}
 
     {% include '@OwpCore/Homepage/homepage__older_news.html.twig' %}
 {% endblock %}
