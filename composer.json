@@ -17,7 +17,8 @@
         "sonata-project/admin-bundle": "^3",
         "sonata-project/doctrine-orm-admin-bundle": "^3",
         "sonata-project/formatter-bundle": "^4.1",
-        "twig/extensions": "^1.5"
+        "twig/extensions": "^1.5",
+        "vich/uploader-bundle": "^1.12"
     },
     "config": {
         "optimize-autoloader": true
