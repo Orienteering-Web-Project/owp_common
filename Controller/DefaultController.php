@@ -11,7 +11,6 @@ class DefaultController extends Controller
     {
         return $this->render('@OwpCore/Homepage/homepage.html.twig', [
             'news' => $this->has('service.news') ? $this->get('service.news')->getBy() : [],
-            'events' => $this->has('service.event') ? $this->get('service.event')->getBy() : [],
         ]);
     }
 }
